@@ -1,0 +1,132 @@
+{
+    "genres": {
+    "G01": "Comedy",
+    "G02": "Romance",
+    "G03": "Action",
+    "G04": "Sci-Fi",
+    "G05": "Drama",
+    "G06": "Thriller",
+    "G07": "Biography",
+    "G08": "Animation",
+    "G09": "Musical",
+    "G10": "Horror",
+    "G11": "Sport"
+  },
+  "rules": {
+    "G01": {
+        "Q01": 1,
+        "Q02": 1,
+        "Q03": 1,
+        "Q04": 0
+    },
+    "GO2": {
+        "Q01": 1,
+        "Q02": 1,
+        "Q03": 1,
+        "Q04": 1
+    },
+    "G03": {
+        "Q01": 0,
+        "Q05": 1,
+        "Q06": 1
+    },
+    "G04": {
+        "Q01": 0,
+        "Q05": 1,
+        "Q06": 0,
+        "Q07": 0
+    },
+    "G05": {
+        "Q01": 0,
+        "Q05": 0,
+        "Q09": 0,
+        "Q10": 0
+    },
+    "G06": {
+        "Q01": 0,
+        "Q05": 1,
+        "Q06": 0,
+        "Q07": 1,
+        "Q08": 1
+    },
+    "G07": {
+        "Q01": 0,
+        "Q05": 0,
+        "Q09": 0,
+        "Q10": 1
+    },
+    "G08": {
+        "Q01": 1,
+        "Q02": 1,
+        "Q03": 0
+    },
+    "G09": {
+        "Q01": 1,
+        "Q02": 0
+    },
+    "G10": {
+        "Q01": 0,
+        "Q05": 1,
+        "Q06": 0,
+        "Q07": 1,
+        "Q08": 0
+    },
+    "G11": {
+        "Q01": 0,
+        "Q05": 0,
+        "Q09": 1
+    }
+  },
+  "questions": {
+    "QO1": { 
+      "question": "More lighthearted and comedic or movies that explore more serious and dramatic themes?",
+      "option1": "lighthearted and comedic movies",
+      "option2": "serious and dramatic movies"
+    },
+    "Q02": {
+      "question": "Movies with a lot of musical numbers",
+      "option1": "Yes",
+      "option2": "No"
+    },
+    "Q03": {
+      "question": "Movies that are more realistic or that are more fantastical",
+      "option1": "Realistic",
+      "option2": "Fantastical"
+    },
+    "Q04": {
+      "question": "Primarily focus on the development of a romantic relationship between two characters",
+      "option1": "Yes",
+      "option2": "No"
+    },
+    "Q05": {
+      "question": "Strong storytelling and character development",
+      "option1": "Yes",
+      "option2": "No"
+    },
+    "Q06": {
+      "question": "More realistic or plausible storyline, or is it more fantastical and reliant on suspension of disbelief?",
+      "option1": "More realistic or plausible storyline",
+      "option2": "More fantastical and reliant on suspension of disbelief"
+    },
+    "Q07": {
+      "question": "Movies that are meant to scare you",
+      "option1": "Yes",
+      "option2": "No"
+    },
+    "Q08": {
+      "question": "Movie rely more on jump scares and gore to create fear or on suspenseful tension and psychological elements",
+      "option1": "Movie rely more on jump scares and gore to create fear",
+      "option2": "Create fear or on suspenseful tension and psychological elements"
+    },
+    "Q09": {
+      "question": "Prefer movies that center around sports and athletic competitions or movies that explore other types of activities and hobbies",
+      "option1": "Movies that center around sports and athletic competitions",
+      "option2": "Movies that explore other types of activities and hobbies"
+    },
+    "Q10": {
+      "question": "Does the movie use flashbacks or other techniques to explore the character's past and how it has influenced their present life?",
+      "option1": "Yes",
+      "option2": "No"
+    }
+  }
+}

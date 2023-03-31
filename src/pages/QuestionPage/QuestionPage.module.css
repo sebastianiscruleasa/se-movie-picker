@@ -6,3 +6,7 @@
     background-repeat: no-repeat;
     overflow-y: scroll ;
 }
+
+.pickedMovie {
+    color: white;
+}

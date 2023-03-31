@@ -1,57 +1,57 @@
-import styles from './QuestionPage.module.css';
+import styles from "./QuestionPage.module.css";
 import Question from "./Question";
-import {useState} from "react";
-
-const questions = {
-    "Q01":
-        {
-            question: "What is the capital of France?",
-            option1: "Paris1",
-            option2: "London1"
-        },
-    "Q02":
-        {
-            question: "What is the capital of England?",
-            option1: "Paris2",
-            option2: "London2"
-        },
-    "Q03":
-        {
-            question: "What is the capital of Germany?",
-            option1: "Paris3",
-            option2: "London3"
-        }
-}
+import { useEffect, useState } from "react";
+import { getQuestions } from "../../requests/requests";
+import { inferenceMachince } from "../../inference/InferenceMachine";
+import Button from "../../components/Button/Button";
 
 function QuestionPage() {
-    const [questionIndex, setQuestionIndex] = useState(1);
-    const [responses, setResponses] = useState({});
+  const [questions, setQuestions] = useState({});
+  const [questionIndex, setQuestionIndex] = useState(2);
+  const [responses, setResponses] = useState({ Q01: 1 });
+  let movieGenre;
 
-    const handleResponse = (response) => {
-        if (questionIndex < 3) {
-            setResponses((prevState) => {
-                    const questionId = `Q0${questionIndex}`;
-                    return {...prevState, [questionId]: response}
-                }
-            );
-            setQuestionIndex((prevState) => prevState + 1);
-        } else {
-            setResponses((prevState) => {
-                    const questionId = `Q0${questionIndex}`;
-                    return {...prevState, [questionId]: response}
-                }
-            );
-            setQuestionIndex((prevState) => prevState + 1);
-            //call inference machine
-        }
+  const handleResponse = (response) => {
+    if (questionIndex < 10) {
+      setResponses((prevState) => {
+        const questionId = `Q0${questionIndex}`;
+        return { ...prevState, [questionId]: response };
+      });
+      setQuestionIndex((prevState) => prevState + 1);
+    } else {
+      setResponses((prevState) => {
+        const questionId = `Q${questionIndex}`;
+        return { ...prevState, [questionId]: response };
+      });
+      setQuestionIndex((prevState) => prevState + 1);
+      inferenceMachince(responses).then((genre) => {
+        movieGenre = genre;
+        console.log(movieGenre);
+      });
     }
+  };
 
-    return (
-        <div className={styles.background}>
-            {questionIndex <=3 &&<Question question={questions[`Q0${questionIndex}`]} handleResponse={handleResponse}/>}
-            {questionIndex > 3 && <div>Thank you for your responses</div>}
-        </div>
-    );
+  useEffect(() => {
+    getQuestions().then((data) => setQuestions(data));
+  }, []);
+
+  return (
+    <div className={styles.background}>
+      {questionIndex < 10 && (
+        <Question
+          question={questions[`Q0${questionIndex}`]}
+          handleResponse={handleResponse}
+        />
+      )}
+      {questionIndex === 10 && (
+        <Question
+          question={questions[`Q${questionIndex}`]}
+          handleResponse={handleResponse}
+        />
+      )}
+      {questionIndex > 10 && <Button buttonName={movieGenre} />}
+    </div>
+  );
 }
 
 export default QuestionPage;
