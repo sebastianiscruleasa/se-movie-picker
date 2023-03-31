@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import { getQuestions } from "../../requests/requests";
 import { inferenceMachince } from "../../inference/InferenceMachine";
 import Button from "../../components/Button/Button";
+import Movie from "./Movie";
 
 function QuestionPage() {
   const [questions, setQuestions] = useState({});
   const [questionIndex, setQuestionIndex] = useState(2);
   const [responses, setResponses] = useState({ Q01: 1 });
-  let movieGenre;
+  const [userPreferences, setUserPreferences] = useState({});
 
   const handleResponse = (response) => {
     if (questionIndex < 10) {
@@ -25,8 +26,9 @@ function QuestionPage() {
       });
       setQuestionIndex((prevState) => prevState + 1);
       inferenceMachince(responses).then((genre) => {
-        movieGenre = genre;
-        console.log(movieGenre);
+          setUserPreferences((prevState) => {
+                return {...prevState, "genre": genre}
+          })
       });
     }
   };
@@ -37,19 +39,20 @@ function QuestionPage() {
 
   return (
     <div className={styles.background}>
-      {questionIndex < 10 && (
-        <Question
-          question={questions[`Q0${questionIndex}`]}
-          handleResponse={handleResponse}
-        />
-      )}
-      {questionIndex === 10 && (
-        <Question
-          question={questions[`Q${questionIndex}`]}
-          handleResponse={handleResponse}
-        />
-      )}
-      {questionIndex > 10 && <Button buttonName={movieGenre} />}
+      {/*{questionIndex < 10 && (*/}
+      {/*  <Question*/}
+      {/*    question={questions[`Q0${questionIndex}`]}*/}
+      {/*    handleResponse={handleResponse}*/}
+      {/*  />*/}
+      {/*)}*/}
+      {/*{questionIndex === 10 && (*/}
+      {/*  <Question*/}
+      {/*    question={questions[`Q${questionIndex}`]}*/}
+      {/*    handleResponse={handleResponse}*/}
+      {/*  />*/}
+      {/*)}*/}
+      {/*{questionIndex > 10 && <Button buttonName={movieGenre} onClick={()=>{co}}/>}*/}
+        <Movie/>
     </div>
   );
 }

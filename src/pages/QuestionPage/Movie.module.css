@@ -1,0 +1,54 @@
+.container {
+    display: flex;
+    height: max-content;
+    align-items: center;
+    padding: 50px;
+}
+
+.moviePoster {
+    width: 300px;
+    padding-inline: 100px;
+}
+
+.movieDetailsContainer {
+    padding-inline: 100px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.movieTitle{
+    font-size: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.movieDetails{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.movieImdbRating{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin: 20px 0;
+}
+.movieActors{
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.moviePlot{
+
+    margin-bottom: 50px;
+}
