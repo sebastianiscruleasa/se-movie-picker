@@ -9,11 +9,11 @@ function Question({ question, handleResponse }) {
         <div className={styles.optionsContainer}>
           <Button
             buttonName={question.option1}
-            onClick={() => handleResponse(0)}
+            onClick={() => handleResponse(1)}
           />
           <Button
             buttonName={question.option2}
-            onClick={() => handleResponse(1)}
+            onClick={() => handleResponse(0)}
           />
         </div>
       </div>

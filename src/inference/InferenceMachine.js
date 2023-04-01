@@ -127,7 +127,7 @@ const languageFilter = (movies, filter) => {
 
 export async function getMovieFromQuestions(response) {
   let movies = await getMovies();
-  let genre = inferenceMachince(response[0]);
+  let genre = await inferenceMachince(response[0]);
 
   const selectedMovies = movies.filter((movie) =>
     movie["genre"].includes(genre)
@@ -139,7 +139,7 @@ export async function getMovieFromQuestions(response) {
   let fq4Movies = runtimeFilter(fq3Movies, response[4]);
   let fq5Movies = languageFilter(fq4Movies, response[5]);
 
-  console.log(fq5Movies[Math.floor(Math.random() * fq5Movies.length)]);
+  return (fq5Movies[Math.floor(Math.random() * fq5Movies.length)]);
 }
 
 // getMovieFromQuestions([response, "<17", "<2000", ">=6", "<120", "Spanish"]);
