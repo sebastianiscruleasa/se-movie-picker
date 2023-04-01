@@ -46,9 +46,9 @@ let response = {
 // console.log(`Genre: ${movieGenre}`);
 // console.log(`Movie: ${getMovie(movieGenre)}`);
 
-const adultFilter = (movies) => {
+const adultFilter = (movies, filter) => {
   let filteredArray;
-  if (response[1] === ">=17") {
+  if (filter === ">=17") {
     filteredArray = ["R", "Not Rated", "TV-MA", "Approved"].reduce(
       (array, ageFilter) => {
         const newArray = movies.filter((movie) => {
@@ -69,9 +69,9 @@ const adultFilter = (movies) => {
   return filteredArray;
 };
 
-const yearFilter = (movies) => {
+const yearFilter = (movies, filter) => {
   let filteredArray;
-  if (response[2] === ">=2000") {
+  if (filter === ">=2000") {
     filteredArray = movies.filter(
       (movie) => !movie["year"] || movie["year"] >= 2000
     );
@@ -83,17 +83,17 @@ const yearFilter = (movies) => {
   return filteredArray;
 };
 
-const ratingFilter = (movies) => {
+const ratingFilter = (movies, filter) => {
   let filteredArray;
-  if (response[3] === ">=6") {
+  if (filter === ">=6") {
     filteredArray = movies.filter(
       (movie) => !movie["imdbrating"] || movie["imdbrating"] >= 6
     );
-  } else if (response[3] === ">=7") {
+  } else if (filter === ">=7") {
     filteredArray = movies.filter(
       (movie) => !movie["imdbrating"] || movie["imdbrating"] >= 7
     );
-  } else if (response[3] === ">=8") {
+  } else if (filter === ">=8") {
     filteredArray = movies.filter(
       (movie) => !movie["imdbrating"] || movie["imdbrating"] >= 8
     );
@@ -101,9 +101,9 @@ const ratingFilter = (movies) => {
   return filteredArray;
 };
 
-const runtimeFilter = (movies) => {
+const runtimeFilter = (movies, filter) => {
   let filteredArray;
-  if (response[4] === "<120") {
+  if (filter === "<120") {
     filteredArray = movies.filter(
       (movie) => !movie["runtime"] || movie["runtime"] < 120
     );
@@ -115,25 +115,25 @@ const runtimeFilter = (movies) => {
   return filteredArray;
 };
 
-const languageFilter = (movies) => {
+const languageFilter = (movies, filter) => {
   let filteredArray;
-  if (response[5] === "English") {
+  if (filter === "English") {
     filteredArray = movies.filter(
       (movie) => !movie["language"] || movie["language"].includes("English")
     );
-  } else if (response[5] === "French") {
+  } else if (filter === "French") {
     filteredArray = movies.filter(
       (movie) => !movie["language"] || movie["language"].includes("French")
     );
-  } else if (response[5] === "Spanish") {
+  } else if (filter === "Spanish") {
     filteredArray = movies.filter(
       (movie) => !movie["language"] || movie["language"].includes("Spanish")
     );
-  } else if (response[5] === "German") {
+  } else if (filter === "German") {
     filteredArray = movies.filter(
       (movie) => !movie["language"] || movie["language"].includes("German")
     );
-  } else if (response[5] === "Italian") {
+  } else if (filter === "Italian") {
     filteredArray = movies.filter(
       (movie) => !movie["language"] || movie["language"].includes("Italian")
     );
@@ -149,11 +149,11 @@ export async function getMovieFromQuestions(response) {
     movie["genre"].includes(genre)
   );
 
-  let fq1Movies = adultFilter(selectedMovies);
-  let fq2Movies = yearFilter(fq1Movies);
-  let fq3Movies = ratingFilter(fq2Movies);
-  let fq4Movies = runtimeFilter(fq3Movies);
-  let fq5Movies = languageFilter(fq4Movies);
+  let fq1Movies = adultFilter(selectedMovies, response[1]);
+  let fq2Movies = yearFilter(fq1Movies, response[2]);
+  let fq3Movies = ratingFilter(fq2Movies, response[3]);
+  let fq4Movies = runtimeFilter(fq3Movies, response[4]);
+  let fq5Movies = languageFilter(fq4Movies, response[5]);
 
   console.log(fq5Movies[Math.floor(Math.random() * fq5Movies.length)]);
 }
