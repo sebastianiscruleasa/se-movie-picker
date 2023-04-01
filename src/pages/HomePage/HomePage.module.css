@@ -1,8 +1,13 @@
 .background {
     display: flex;
     height: 100vh;
-    background-image: url("../../assets/HomepageBackground.jpg");
+    background-image: url("../../assets/HomepageBackground.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position-y: 15%;
+}
+
+.startContainer {
+    margin-top: 490px;
+    margin-left: 76px;
 }

@@ -6,7 +6,9 @@ function HomePage() {
     const navigate = useNavigate();
     return (
         <div className={styles.background}>
-            <Button buttonName="Start" onClick={() => navigate('/question')}/>
+            <div className={styles.startContainer}>
+                <Button buttonName="Start" homepageButton={true} onClick={() => navigate('/question')}/>
+            </div>
         </div>
     );
 }
