@@ -7,18 +7,15 @@ import {
   yearFilter,
 } from "./FiltersFunctions";
 
-export async function inferenceMachince(response) {
+export async function inferenceMachine(response) {
   const moviesRules = await getRules();
   const genres = await getGenres();
   for (const movieRule in moviesRules) {
     const moviesAnswers = moviesRules[movieRule];
     let match = true;
-    for (const movieAnswear in moviesAnswers) {
+    for (const movieAnswer in moviesAnswers) {
       if (match) {
-        if (
-          !response ||
-          moviesAnswers[movieAnswear] !== response[movieAnswear]
-        ) {
+        if (!response || moviesAnswers[movieAnswer] !== response[movieAnswer]) {
           match = false;
         }
       }
@@ -32,7 +29,7 @@ export async function inferenceMachince(response) {
 export async function getMovieFromQuestions(response) {
   console.log(response);
   let movies = await getMovies();
-  let genre = await inferenceMachince(response[0]);
+  let genre = await inferenceMachine(response[0]);
   console.log(genre);
   const selectedMovies = movies.filter((movie) =>
     movie["genre"].includes(genre)
