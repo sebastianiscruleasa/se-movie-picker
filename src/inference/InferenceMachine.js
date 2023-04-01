@@ -48,7 +48,7 @@ let response = {
 
 const adultFilter = (movies, filter) => {
   let filteredArray;
-  if (filter === ">=17") {
+  if (filter === 1) {
     filteredArray = ["R", "Not Rated", "TV-MA", "Approved"].reduce(
       (array, ageFilter) => {
         const newArray = movies.filter((movie) => {
@@ -71,7 +71,7 @@ const adultFilter = (movies, filter) => {
 
 const yearFilter = (movies, filter) => {
   let filteredArray;
-  if (filter === ">=2000") {
+  if (filter === 1) {
     filteredArray = movies.filter(
       (movie) => !movie["year"] || movie["year"] >= 2000
     );
@@ -85,15 +85,11 @@ const yearFilter = (movies, filter) => {
 
 const ratingFilter = (movies, filter) => {
   let filteredArray;
-  if (filter === ">=6") {
+  if (filter === 1) {
     filteredArray = movies.filter(
       (movie) => !movie["imdbrating"] || movie["imdbrating"] >= 6
     );
-  } else if (filter === ">=7") {
-    filteredArray = movies.filter(
-      (movie) => !movie["imdbrating"] || movie["imdbrating"] >= 7
-    );
-  } else if (filter === ">=8") {
+  } else {
     filteredArray = movies.filter(
       (movie) => !movie["imdbrating"] || movie["imdbrating"] >= 8
     );
@@ -103,7 +99,7 @@ const ratingFilter = (movies, filter) => {
 
 const runtimeFilter = (movies, filter) => {
   let filteredArray;
-  if (filter === "<120") {
+  if (filter === 1) {
     filteredArray = movies.filter(
       (movie) => !movie["runtime"] || movie["runtime"] < 120
     );
@@ -117,25 +113,13 @@ const runtimeFilter = (movies, filter) => {
 
 const languageFilter = (movies, filter) => {
   let filteredArray;
-  if (filter === "English") {
+  if (filter === 1) {
     filteredArray = movies.filter(
       (movie) => !movie["language"] || movie["language"].includes("English")
     );
-  } else if (filter === "French") {
-    filteredArray = movies.filter(
-      (movie) => !movie["language"] || movie["language"].includes("French")
-    );
-  } else if (filter === "Spanish") {
-    filteredArray = movies.filter(
-      (movie) => !movie["language"] || movie["language"].includes("Spanish")
-    );
-  } else if (filter === "German") {
+  } else {
     filteredArray = movies.filter(
       (movie) => !movie["language"] || movie["language"].includes("German")
-    );
-  } else if (filter === "Italian") {
-    filteredArray = movies.filter(
-      (movie) => !movie["language"] || movie["language"].includes("Italian")
     );
   }
   return filteredArray;
