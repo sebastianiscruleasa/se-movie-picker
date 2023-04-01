@@ -38,8 +38,8 @@ const dummyMovie = {
 
 function QuestionPage() {
     const [questions, setQuestions] = useState({});
-    const [questionIndex, setQuestionIndex] = useState(2);
-    const [responses, setResponses] = useState({Q01: 1});
+    const [questionIndex, setQuestionIndex] = useState(1);
+    const [responses, setResponses] = useState({});
     // const [userPreferences, setUserPreferences] = useState({});
     const [pickedMovie, setPickedMovie] = useState(null);
 
@@ -71,8 +71,8 @@ function QuestionPage() {
 
     const startAgainHandler = () => {
         setPickedMovie(null);
-        setQuestionIndex(2);
-        setResponses({Q01: 1});
+        setQuestionIndex(1);
+        setResponses({});
     }
 
     return (
