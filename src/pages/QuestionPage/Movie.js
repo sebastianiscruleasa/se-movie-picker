@@ -7,16 +7,16 @@ function Movie({movie, onStartAgain}) {
     const {title, year, rated, actors, plot, language, imdbrating, poster} = movie;
     return (
         <div className={styles.container}>
-            <div className={styles.moviePosterContainer}>
-                <img className={styles.moviePoster} src={poster} alt={title}/>
-            </div>
+            <img className={styles.moviePoster} src={poster} alt={title}/>
             <div className={styles.movieDetailsContainer}>
                 <div className={styles.movieTitle}>{title}</div>
-                <div className={styles.movieDetails}>{year} · {rated} · {calculatedRuntime} · {language}</div>
-                <div className={styles.movieImdbRating}>
-                    <AiFillStar style={{color: "yellow"}}/>
-                    {imdbrating}
-                </div>
+                {imdbrating !== 0 && <>
+                    <div className={styles.movieDetails}>{year} · {rated} · {calculatedRuntime} · {language}</div>
+                    <div className={styles.movieImdbRating}>
+                        <AiFillStar style={{color: "yellow"}}/>
+                        {imdbrating}
+                    </div>
+                </>}
                 <div className={styles.movieActors}>{actors}</div>
                 <div className={styles.moviePlot}>{plot}</div>
                 <Button buttonName="Start again" onClick={onStartAgain}/>

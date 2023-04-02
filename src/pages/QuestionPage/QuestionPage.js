@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import {getFilteredQuestions, getInferenceQuestions} from "../../requests/requests";
 import {getMovieFromQuestions} from "../../inference/InferenceMachine";
 import Movie from "./Movie";
+import {MagnifyingGlass} from "react-loader-spinner";
 
 function QuestionPage() {
     const [inferenceQuestions, setInferenceQuestions] = useState({});
@@ -56,17 +57,29 @@ function QuestionPage() {
         setUserPreferences([]);
     }
 
-    return (<div className={styles.background}>
-        {questionIndex <= 10 && (<Question
-            question={inferenceQuestions[`Q${questionIndex}`]}
-            handleResponse={handleResponse}
-        />)}
-        {questionIndex > 10 && (<Question
-            question={filteredQuestions[`FQ${questionIndex - 10}`]}
-            handleResponse={handleResponse}
-        />)}
-        {pickedMovie && <Movie movie={pickedMovie} onStartAgain={startAgainHandler}/>}
-    </div>);
+    return (
+        <div className={styles.background}>
+            {questionIndex <= 10 && (<Question
+                question={inferenceQuestions[`Q${questionIndex}`]}
+                handleResponse={handleResponse}
+            />)}
+            {questionIndex > 10 && (<Question
+                question={filteredQuestions[`FQ${questionIndex - 10}`]}
+                handleResponse={handleResponse}
+            />)}
+            <MagnifyingGlass
+                visible={pickedMovie === null && questionIndex === 16}
+                height="150"
+                width="150"
+                ariaLabel="MagnifyingGlass-loading"
+                wrapperStyle={{position: "absolute", top: "30%", left: "50%", transform: "translate(-50%, -50%)"}}
+                wrapperClass="MagnifyingGlass-wrapper"
+                glassColor='#c0efff'
+                color='#b71d22'
+            />
+            {pickedMovie && <Movie movie={pickedMovie} onStartAgain={startAgainHandler}/>}
+        </div>
+    );
 }
 
 export default QuestionPage;
