@@ -21,14 +21,6 @@ function QuestionPage() {
                 return {...prevState, [questionId]: response};
             });
             setQuestionIndex((prevState) => prevState + 1);
-        } else if (questionIndex === 11) {
-            setUserPreferences((prevState) => {
-                return [...prevState, inferenceResponses];
-            });
-            setQuestionIndex((prevState) => prevState + 1);
-            setUserPreferences((prevState) => {
-                return [...prevState, response];
-            });
         } else if (questionIndex < 15) {
             setQuestionIndex((prevState) => prevState + 1);
             setUserPreferences((prevState) => {
@@ -36,10 +28,7 @@ function QuestionPage() {
             });
         } else {
             setQuestionIndex((prevState) => prevState + 1);
-            setUserPreferences((prevState) => {
-                return [...prevState, response];
-            });
-            getMovieFromQuestions([...userPreferences, response]).then((movie) => {
+            getMovieFromQuestions([inferenceResponses, ...userPreferences, response]).then((movie) => {
                 setPickedMovie(movie);
             });
         }
