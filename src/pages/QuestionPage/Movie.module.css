@@ -5,8 +5,14 @@
     padding: 50px;
 }
 
+.movieContainer {
+    width: max-content;
+    height: max-content;
+}
+
 .moviePoster {
     width: 300px;
+    height: 450px;
     padding-inline: 100px;
 }
 

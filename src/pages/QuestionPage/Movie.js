@@ -7,7 +7,9 @@ function Movie({movie, onStartAgain}) {
     const {title, year, rated, actors, plot, language, imdbrating, poster} = movie;
     return (
         <div className={styles.container}>
-            <img className={styles.moviePoster} src={poster} alt={title}/>
+            <div className={styles.movieContainer}>
+                <img className={styles.moviePoster} src={poster} alt={title}/>
+            </div>
             <div className={styles.movieDetailsContainer}>
                 <div className={styles.movieTitle}>{title}</div>
                 {imdbrating !== 0 && <>
